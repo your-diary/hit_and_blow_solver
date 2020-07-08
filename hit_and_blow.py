@@ -50,11 +50,9 @@ possible_patterns: np.ndarray = np.empty((2, total_num_possible_pattern), dtype 
 possible_patterns[1] = True
 
 num_pattern: int = 0
-for i in itertools.combinations(range(ns.num_color), ns.num_choice):
-    for j in itertools.permutations(i):
-        possible_patterns[0][num_pattern] = j
-        num_pattern += 1
-possible_patterns.sort(axis = 1) #essentially not needed
+for i in itertools.permutations(range(ns.num_color), ns.num_choice):
+    possible_patterns[0][num_pattern] = i
+    num_pattern += 1
 
 assert (num_pattern == total_num_possible_pattern)
 
